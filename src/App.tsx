@@ -5,9 +5,13 @@ const App = () => {
 
   const socket = io("http://localhost:6200");
   React.useEffect(() => {
-    socket.on("connect", (data:any) => {
-      console.log("connected", data);
+    socket.on("connect", () => {
+      console.log("connected");
     });
+    socket.on("disconnect", (data:any) => {
+      console.log("disconnected", data);
+    })
+
   }, []);
   return (
     <div>App</div>
